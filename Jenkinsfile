@@ -9,8 +9,7 @@ pipeline {
 
     stage('check node') {
       steps {
-        nodejs '16.16.0'
-        sh 'node --version && npm --version'
+        sh 'echo $PATH'
       }
     }
 
