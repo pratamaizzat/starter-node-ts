@@ -7,9 +7,9 @@ pipeline {
       }
     }
 
-    stage('install node') {
+    stage('node version') {
       steps {
-        nodejs '16.16.0'
+        sh 'npm version'
       }
     }
 
