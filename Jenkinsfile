@@ -7,43 +7,12 @@ pipeline {
       }
     }
 
-    stage('log dir') {
-      parallel {
-        stage('log dir') {
-          steps {
-            sh 'ls -la'
-          }
-        }
-
-        stage('install all package') {
-          steps {
-            sh 'pnpm i'
-          }
-        }
-
-      }
-    }
-
-    stage('lint') {
-      parallel {
-        stage('lint') {
-          steps {
-            sh 'pnpm run lint'
-          }
-        }
-
-        stage('unit test') {
-          steps {
-            sh 'pnpm run test'
-          }
-        }
-
-      }
-    }
-
-    stage('log dir 2') {
+    stage('check node') {
       steps {
-        sh 'ls -la'
+        sh '''node --version &&
+npm --version &&
+which node &&
+which npm'''
       }
     }
 
