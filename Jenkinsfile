@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  tools {
+    nodejs '16.16.0'
+  }
   stages {
     stage('checkout code') {
       steps {
@@ -12,6 +15,5 @@ pipeline {
         sh 'npm version'
       }
     }
-
   }
 }
