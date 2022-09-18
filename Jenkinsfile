@@ -20,25 +20,14 @@ pipeline {
     }
 
     stage('lint') {
-      parallel {
-        stage('lint') {
-          steps {
-            sh 'pnpm run lint'
-          }
-        }
-
-        stage('test') {
-          steps {
-            sh 'pnpm run test'
-          }
-        }
-
+      steps {
+        sh 'pnpm run lint'
       }
     }
 
-    stage('build') {
+    stage('test') {
       steps {
-        sh 'pnpm run build'
+        sh 'pnpm run test'
       }
     }
 
