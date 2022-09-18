@@ -14,4 +14,7 @@ pipeline {
     }
 
   }
+  environment {
+    nodejs = '16.16.0'
+  }
 }
