@@ -9,7 +9,36 @@ pipeline {
 
     stage('node version') {
       steps {
-        sh 'node --version && npm --version'
+        sh 'node --version && npm --version && pnpm --version'
+      }
+    }
+
+    stage('install package') {
+      steps {
+        sh 'pnpm install'
+      }
+    }
+
+    stage('lint') {
+      parallel {
+        stage('lint') {
+          steps {
+            sh 'pnpm run lint'
+          }
+        }
+
+        stage('test') {
+          steps {
+            sh 'pnpm run test'
+          }
+        }
+
+      }
+    }
+
+    stage('build') {
+      steps {
+        sh 'pnpm run build'
       }
     }
 
