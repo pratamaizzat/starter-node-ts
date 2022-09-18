@@ -1,11 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:16-alpine'
-      args '-p 3000:3000'
-    }
-
-  }
+  agent any
   stages {
     stage('checkout code') {
       steps {
@@ -13,9 +7,9 @@ pipeline {
       }
     }
 
-    stage('check node') {
+    stage('install node') {
       steps {
-        sh 'echo $PATH'
+        nodejs '16.16.0'
       }
     }
 
