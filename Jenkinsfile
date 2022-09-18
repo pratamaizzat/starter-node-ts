@@ -9,10 +9,7 @@ pipeline {
 
     stage('check node') {
       steps {
-        sh '''node --version &&
-npm --version &&
-which node &&
-which npm'''
+        sh 'echo $PATH'
       }
     }
 
